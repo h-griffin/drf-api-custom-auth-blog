@@ -5,8 +5,15 @@ description = ""
 authors = ["Griffin <60614863+h-griffin@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-djangorestframework = "^3.11.1"
+python = "~3.8"
+django = "^3.0.7"
+djangorestframework = "^3.11.0"
+whitenoise = "^5.1.0"
+django-cors-headers = "^3.4.0"
+djangorestframework-simplejwt = "^4.4.0"
+psycopg2-binary = "^2.8.5"
+django-environ = "^0.4.5"
+gunicorn = "^20.0.4"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
