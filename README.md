@@ -1,4 +1,4 @@
-# Django rest framework with docker and postgreSQL token authorization
+# Django rest framework with docker and postgreSQL token authorization & custom user
 
 
 > terminal command
@@ -38,6 +38,15 @@ gunicorn = "^20.0.4"
 **project/settings.py**
 INSTALLED_APPS = ```'post.apps.PostConfig',```
 AUTH_USER_MODEL = ```post.CustomUser```
+
+models
+admin
+
+
+
+
+
+
 
 
 
