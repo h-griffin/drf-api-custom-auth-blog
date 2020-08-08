@@ -35,12 +35,13 @@ gunicorn = "^20.0.4"
 
 **do not migrate until user model is authenticated with admin**
 
-**project/settings.py**
-INSTALLED_APPS = ```'post.apps.PostConfig',```
-AUTH_USER_MODEL = ```post.CustomUser```
 
 models
 admin
+settings > installed
+project urls
+app urls > create urls.py
+tests
 
 
 
@@ -48,7 +49,9 @@ admin
 
 
 
-
+**project/settings.py**
+INSTALLED_APPS = ```'post.apps.PostConfig',```
+AUTH_USER_MODEL = ```post.CustomUser```
 
 **Dockerfile**
 ```FROM python:3.8-slim``` slim!!
