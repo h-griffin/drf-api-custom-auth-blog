@@ -36,14 +36,30 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'whitenoise.runserver_nostatic', # must be above static files
     'django.contrib.staticfiles',
 
-    'post.apps.PostConfig',
+    # 3rd party
+    'rest_framework',
+    'corsheaders',
+
+    # local
+    'fish.apps.FishConfig',
 ]
 
 MIDDLEWARE = [
+    # 'django.middleware.security.SecurityMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',    # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',   # new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -53,10 +69,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog_project.urls'
 
+# no templates // this is api for react app
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [], # edit here if using html templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,6 +96,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': env('DB_NAME'),
+        # 'USER': env('DB_USER'),
+        # 'PASSWORD': env('DB_PASSWORD'),
+        # 'HOST': env('DB_HOST'),  # match to service in docker-compose
+        # 'PORT': env('DB_PORT'),
     }
 }
 
@@ -119,6 +143,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'post.CustomUser'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
+
