@@ -42,13 +42,14 @@ gunicorn = "^20.0.4"
 **pyproject.toml**
 ```python = "~3.8"```
 
+### POST ### 
 - models
 - admin
     model
 - settings > installed apps
-    app
+    post app
 - project urls
-    app urls > create urls.py
+    post app urls > create urls.py
         views
             models
             serializers
@@ -70,6 +71,26 @@ gunicorn = "^20.0.4"
     rest framework
     cors whitelist
 tests
+
+
+### USERS ### 
+touch users/
+
+models
+admin
+    models
+    forms
+settings > installed apps
+    users app
+
+project > urls
+    users app urls
+        views
+            models
+            serializers
+tests
+
+
 
 #############################################
 
