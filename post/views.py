@@ -10,7 +10,7 @@ class PostList(ListCreateAPIView):
     serializer_class = PostSerializer
 
 class PostDetail(RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthorReadOnly)
+    permission_classes = (IsAuthorReadOnly,) # must be tuple (,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 

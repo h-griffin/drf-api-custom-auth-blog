@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # local
-    'fish.apps.FishConfig',
+    'post.apps.PostConfig',
     'users.apps.UsersConfig',
 ]
 

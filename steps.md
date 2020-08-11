@@ -90,8 +90,6 @@ project > urls
             serializers
 tests
 
-
-
 #############################################
 
 **post/models.py**
