@@ -4,7 +4,7 @@
 
 # [Heroku Deployed Backend]()
 # [Vercel Deployed Site]()
-# [GitHub Repo]()
+# [GitHub Repo](https://github.com/h-griffin/drf-auth-blog)
 
 
 # Project description: 
@@ -15,7 +15,6 @@
 React.js
 Next.js
 bootstrap
-sass
 vercel
 
 #### Back End:

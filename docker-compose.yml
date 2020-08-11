@@ -4,7 +4,7 @@ services:
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
-    # command: gunicorn snacks_api_project.wsgi:application --bind 0.0.0.0:8000
+    # command: gunicorn blog_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
