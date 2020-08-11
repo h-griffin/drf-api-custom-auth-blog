@@ -32,10 +32,6 @@ psycopg2-binary = "^2.8.5"
 django-environ = "^0.4.5"
 gunicorn = "^20.0.4"
 ```
-> $ poetry shell 
-
-> $ django-admin startproject blog_project .
-> $ python manage.py startapp post
 
 **do not migrate until user model is authenticated with admin**
 
@@ -104,11 +100,11 @@ touch **post/permissions.py**
 touch **post/serializers.py**
 
 
-**recipes/views.py**
+**post/views.py**
 - import model, serializer, permissions
 - list and detail view
 
-**recipes/urls.py**
+**post/urls.py**
 - home  =  list
 - int   =  detail
 
@@ -123,11 +119,24 @@ touch **post/serializers.py**
 - app urls
 - authorization - token - token refresh
 
-**recipes.tests.py**
+**post/tests.py**
 - basic content test
 
-made superuser
 
+#############################################
+
+touch **project/.env** *INSIDE PROJECT FOLDER*
+
+move settings to env
+- rebuild after moving to env
+> $ docker compose down 
+> $ docker compose up --build -d
+
+collect static files *INSIDE CONTAINER*
+touch empty **static/** folder
+    collect static needs static folder to create **staticfiles** folder
+
+> $ python manage.py createsuperuser
 
 touch **Dockerfile**
 touch **docker-compose.yml**
@@ -146,4 +155,43 @@ touch **requirements.txt**
     - empty static/ and will create staticfiles/
 
 > $ poetry export -f requirements.txt -o requirements.txt
+
+
+
+
+############
+  NOT DONE
+############ 
+
+httpie
+> $ http POST :8000/api/token/ username=griffin password=12345
+
+> $ http :8000/api/v1/ "Authorization: Bearer <'paste token'>"
+
+postman website
+
+superuser cannot see without token 
+**library/settings**
+```      'rest_framework.authentication.SessionAuthentication',
+      'rest_framework.authentication.BasicAuthentication',
+```
+now the superuser can see without token
+  browsable api (see without using django admin)
+
+
+
+deploy through heroku or AWS -- tbd
+next.js app will use live link ^^
+
+
+deploy next through vercel
+
+
+vercel errors: python and js allow, but connecting uses others that do not allow
+    Link import 'next/Link' must be /link
+        X import Link from 'next/Link'
+        √ import Link form 'next/link'
+                                 ^
+
+
 
