@@ -157,8 +157,6 @@ touch **requirements.txt**
 > $ poetry export -f requirements.txt -o requirements.txt
 
 
-
-
 ############
   NOT DONE
 ############ 
