@@ -60,18 +60,11 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # local
-    'post.apps.PostConfig',
-    'users.apps.UsersConfig',
+    'post.apps.PostConfig',   # app
+    'users.apps.UsersConfig', # custom users
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',    # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -89,7 +82,7 @@ ROOT_URLCONF = 'blog_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], # edit here if using html templates
+        'DIRS': [], # edit here if using html templates for front end
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
