@@ -6,11 +6,11 @@
 **folder/file**
 
 ## setup
-> $ mkdir drf-auth-blog
+> $ mkdir drf-api-custom-auth-blog
 
 Use poetry to initialize folder 
 
-> $ cd `drf-auth-blog` 
+> $ cd `drf-api-custom-auth-blog` 
 > $ poetry init -n 
 > $ poetry add django djangorestframework 
 > $ poetry add --dev black 
